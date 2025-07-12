@@ -109,8 +109,8 @@ export default function PublicationListPage() {
                     {pub.releaseDate}
                   </div>
                 </td>
-                <td className="px-6 py-4 text-gray-600 align-top">
-                  <div className="max-w-xs">
+                <td className="px-6 py-4 text-gray-600 align-middle">
+                  <div className="max-w-xs min-h-[60px] flex flex-col justify-center">
                     <div className="leading-relaxed">
                       {expandedDescriptions.has(pub.id) ? (
                         <span>{pub.description || 'Tidak ada deskripsi'}</span>
@@ -121,7 +121,7 @@ export default function PublicationListPage() {
                     {pub.description && pub.description.length > 100 && (
                       <button
                         onClick={() => toggleDescription(pub.id)}
-                        className="text-blue-600 hover:text-blue-800 text-xs mt-1 font-medium transition duration-200"
+                        className="text-blue-600 hover:text-blue-800 text-xs mt-1 font-medium transition duration-200 self-start"
                       >
                         {expandedDescriptions.has(pub.id) ? 'Sembunyikan' : 'Selengkapnya'}
                       </button>
@@ -129,7 +129,7 @@ export default function PublicationListPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-center align-middle">
-                  <div className="flex justify-center items-center">
+                  <div className="flex justify-center items-center min-h-[96px]">
                     <img
                       src={pub.coverUrl}
                       alt={`Sampul ${pub.title}`}
@@ -143,28 +143,30 @@ export default function PublicationListPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-center align-middle">
-                  <div className="flex justify-center items-center space-x-2">
-                    <button
-                      onClick={() => handleEdit(pub)}
-                      className="px-3 py-1 text-sm font-medium text-white bg-yellow-400 rounded hover:bg-yellow-500 transition duration-200"
-                      disabled={deleteLoading === pub.id}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDeleteClick(pub)}
-                      className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded hover:bg-red-600 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
-                      disabled={deleteLoading === pub.id}
-                    >
-                      {deleteLoading === pub.id ? (
-                        <>
-                          <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white mr-1"></div>
-                          Loading...
-                        </>
-                      ) : (
-                        'Hapus'
-                      )}
-                    </button>
+                  <div className="flex justify-center items-center space-x-2 min-h-[96px]">
+                    <div className="flex flex-col space-y-2">
+                      <button
+                        onClick={() => handleEdit(pub)}
+                        className="px-3 py-1 text-sm font-medium text-white bg-yellow-400 rounded hover:bg-yellow-500 transition duration-200"
+                        disabled={deleteLoading === pub.id}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteClick(pub)}
+                        className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded hover:bg-red-600 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                        disabled={deleteLoading === pub.id}
+                      >
+                        {deleteLoading === pub.id ? (
+                          <>
+                            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white mr-1"></div>
+                            Loading...
+                          </>
+                        ) : (
+                          'Hapus'
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </td>
               </tr>
