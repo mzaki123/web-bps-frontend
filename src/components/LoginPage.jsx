@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import bpslogo from "../assets/bps-logo.png"; // untuk akses ke gambar
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../hooks/useAuth'; 
+import { useAuth } from "../hooks/useAuth";
 
 export default function LoginPage({ setCurrentPage }) {
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ export default function LoginPage({ setCurrentPage }) {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <div className="flex justify-center mb-6">
           <BpsLogo />
@@ -138,10 +138,18 @@ export default function LoginPage({ setCurrentPage }) {
           </button>
         </form>
       </div>
-      <div>
-        <h3>akun demo : </h3>
-        <small>Email : test@example.com</small>
-        <small>password</small>
+
+      {/* Demo Account Section - Separated */}
+      <div className="bg-white p-4 rounded-lg shadow-lg w-96 mt-4">
+        <h3 className="text-sm font-medium text-gray-700 mb-2">Akun Demo:</h3>
+        <div className="space-y-1 text-sm text-gray-600">
+          <div>
+            <span className="font-medium">Email:</span> test@example.com
+          </div>
+          <div>
+            <span className="font-medium">Password:</span> password
+          </div>
+        </div>
       </div>
     </div>
   );
